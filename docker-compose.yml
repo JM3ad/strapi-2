@@ -1,6 +1,8 @@
 services:
   api:
-    build: .
+    build:
+      context: .
+      target: dev
     ports:
       - 1337:1337
     env_file:

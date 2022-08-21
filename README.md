@@ -55,3 +55,12 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+
+## Todo:
+* Try releasing the API to Azure; check it can work
+* Set up a front end
+
+## State
+* App released at https://dustvale-api.azurewebsites.net/
+* DB accessible at https://bit.io/JackMead/strapi-prod

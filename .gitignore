@@ -107,8 +107,14 @@ coverage
 ############################
 
 .env
+.env.prod
 license.txt
 exports
 *.cache
 build
 .strapi-updater.json
+
+####### Python
+pyproject.toml
+poetry.lock
+*.py
