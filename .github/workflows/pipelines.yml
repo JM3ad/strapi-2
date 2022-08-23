@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout
+        uses: actions/checkout@v3
       - name: Check build works
         uses: npm run build
   deploy:
@@ -20,7 +20,7 @@ jobs:
       WEBHOOK: ${{ secrets.WEBHOOK }}
     steps:
       - name: Checkout
-        uses: actions/checkout
+        uses: actions/checkout@v3
       - name: Build image
         run: docker build --target prod --tag jackmead/strapi .
       - name: Docker login
