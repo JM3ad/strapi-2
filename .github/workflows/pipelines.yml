@@ -8,12 +8,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
       - name: Check build works
         run: npm run build
   deploy:
     name: Deploy to Azure
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    needs: run_build
+    # if: github.ref == 'refs/heads/main'
     env:
       DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -21,11 +24,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Pull existing image for cache
+        run: docker pull $DOCKER_USER/strapi
       - name: Build image
-        run: docker build --target prod --tag jackmead/strapi .
+        run: docker build --target prod --tag $DOCKER_USER/strapi --cache-from $DOCKER_USER/strapi .
       - name: Docker login
         run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
       - name: Push the image
-        run: docker push jackmead/strapi .
+        run: docker push $DOCKER_USER/strapi
       - name: Trigger deployment
         run: curl --fail -X POST $WEBHOOK

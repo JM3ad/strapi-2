@@ -1,3 +1,21 @@
-.env
+# Sensitive
+.env*
+infrastructure
+
+# Cached
 node_modules
 .tmp
+.venv
+
+# Irrelevant
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+.gitignore
+.github
+.git
+
+pyproject.toml
+poetry.lock
+*.py
