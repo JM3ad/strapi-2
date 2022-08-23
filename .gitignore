@@ -118,3 +118,9 @@ build
 pyproject.toml
 poetry.lock
 *.py
+
+###### Terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars

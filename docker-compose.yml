@@ -9,6 +9,8 @@ services:
       - .env
     environment:
       - DATABASE_HOST=db
+    volumes:
+      - ./src:/opt/app/src
   db:
     image: postgres:9.6-alpine
     restart: always
